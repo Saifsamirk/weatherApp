@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Pacifico&display=swap');
+#weather-app {
+    box-sizing: border-box;
+    font-family: 'Arvo', serif;
+
+    #header-container{
+    background-color:rgb(30, 30, 30) ;
+    position: relative;
+    font-weight: bold;
+
+    #header{
+        color: white;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        #header-name{
+            font-family: 'Pacifico', cursive;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        small{
+            position: absolute;
+            margin: 20px auto;
+            z-index: 1;
+
+            span{
+                background-color: white;
+                color: #1A1A1A;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                margin: 0 5px;
+            }
+        }
+        
+        nav{
+            position: absolute;
+            right: 20px;
+            top: 30px;
+            transform: rotate(-90deg);
+            transform-origin: right;
+            display: flex;
+            font-size: 10px;
+            li{
+                list-style-type: none;
+                margin: 0 5px;
+                    cursor: pointer;
+                    padding: 5px;
+                    &:hover{
+                        background-color: white;
+                        color: #1A1A1A;
+                    }
+            }
+        }
+    }
+    #square-boxes > div{
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        &:first-of-type{
+            right: 50%;
+            bottom: 20%;
+            width: 8px;
+            height: 8px;
+            border: 5px solid #1299A3;
+            border-radius: 7px;
+        }
+        &:last-of-type{
+            left:35%;
+            top: 40%;
+            width: 8px;
+            height: 8px;
+            border: 5px solid #1299A3;
+            border-radius: 7px;
+        }
+    }
+    #title{
+        display: flex;
+        justify-content: flex-end;
+        width: 70%;
+        position: relative;
+        padding: 50px 0;
+        h1{
+            color: white;
+            font-size:70px ;
+            z-index: 1;
+            span{
+                color: #ED5960;
+            }
+        }
+        &::after, &::before{
+            content: '';
+            position: absolute;
+            right: 30px;
+            width: 10px;
+            height: 10px;
+            border: 10px solid #1299A3;
+            border-radius: 10px;
+        }
+        &::before{
+            top: 50%;
+            left: 30%;
+            width: 7px;
+            height: 7px;
+        }
+    }
+
+    #cover{
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%,0%);
+        color: rgb(126, 125, 125) ;
+        letter-spacing: 20px;
+        font-stretch: ultra-expanded;
+        text-transform: uppercase;
+        width: 50%;
+        opacity: 0.1;
+        font-size: 125px;
+        font-weight: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        &::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 90%;
+            height: 100%;
+            border-right: 3px solid black;
+            background: repeating-linear-gradient(
+            90deg,
+            black,
+            black 3px,
+            rgb(30, 30, 30) 3px,
+            rgb(30, 30, 30) 25%,
+            );
+            z-index: -1;
+        }
+        * {
+            margin: 0;
+            position: absolute;
+            top: 90px;
+            left: 300px;
+        }
+        }
+    }
+    #body-wrapper{
+        background-color: #26293A;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 0;
+        min-height: 40vh;
+        *{
+            margin: 10px 0;
+            color: white;
+        }
+
+        small:first-of-type{
+            color: #606771;
+        }
+
+        #search-bar{    
+            background-color: #E8F0FE;
+            position: relative;
+            height: 35px;
+            width: 50%;
+            display: flex;
+            input, button{
+                border: 0;
+                background: transparent;
+                position: absolute;
+                color: #1E1E1E;
+                margin-left: 10px;
+                &:focus{
+                    outline: none;
+                }
+                &::placeholder{
+                    color: #1E1E1E;
+                }
+            }
+
+            input{
+                width:90%;
+            }
+
+            button{
+                background-color: #339AF0;
+                color: white;
+                right: 0;
+                height: 100%;
+                width: 30%;
+                margin: auto;
+                cursor: pointer;
+                &:hover{
+                    background-color: #1E1E1E;
+                }
+            }
+        }
+        ul{
+            list-style-type: none;
+            display: flex;
+            position: absolute;
+            top: 70px;
+            right: -50px;
+            margin: 0;
+            transform: rotate(90deg);
+            li{
+                margin: 0 10px;
+                padding: 5px;
+                cursor: pointer;
+                &:hover{
+                    background-color: white;
+                    color: #1A1A1A;
+                }
+            }
+        }
+
+        #loader{
+            display: flex;
+            #circle{
+                background-color: #fff;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                margin: 5px;
+                animation: bounce 0.5s ease-in infinite;
+                &:nth-child(2), &:nth-child(3){
+                    animation-delay: 0.1s;
+                }
+            }
+            
+            @keyframes bounce{
+                0%,
+                100%{
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-10px);
+                }
+            }
+        }
+        
+       
+        
+
+        #balloon{
+            width: 40px;
+            height: 40px;
+            background-color: #EC6E4C;
+            border-radius: 50%;
+        }
+
+        #temprature{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: 40px;
+            #secondary-temprature{
+                display: flex;
+                font-size: 30px;
+            }
+            & > div, #secondary-temprature > div {
+                margin: 10px 10px;
+                position: relative;
+            }
+            & #main-temprature::after, & #secondary-temprature > div::after {
+                content: "";
+                position : absolute;
+                height: 4px;
+                width: 4px;
+                border: 2px solid white;
+                border-radius: 50%;
+                right: -10px;
+            }
+        }
+        small{
+            text-transform: capitalize;
+        }
+        #weather-tag{
+            position: absolute;
+            right: 30px;
+            font-size: small;
+            &::after, &::before{
+                position: absolute;
+                content: '';
+                background-color: yellow;
+                margin-left: 5px;
+                border-radius: 50%;
+            }
+            &::after{
+                width: 10px;
+                height: 10px;
+                bottom:0;
+            }
+            &::before{
+                width: 3px;
+                height: 3px;
+                top: -3px;
+                right: -11px;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
